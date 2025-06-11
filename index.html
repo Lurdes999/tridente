@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stampede Rush Trident, ¡Juga con Poseidón y Gana YA!</title>
+    <link rel="icon" href="logo-tridente.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('tridente_casino.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            font-weight: bold;
+            color: #fff267;
+            text-shadow: 2px 2px 20px #ffdd00;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .hero h2 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #fff267;
+            text-shadow: 2px 2px 20px #ffdd00;
+            animation: fadeIn 1.5s ease-in-out;
+            margin-top: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff6d00, #ffdd00, #ff6d00);
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 0 18px rgb(255 160 0);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .cta-button i {
+            margin-right: 15px;
+            font-size: 1.8em;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgb(255 160 0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info {
+            background: #1a1a1a;
+            padding: 50px 20px;
+        }
+
+        .info h2 {
+            font-size: 2em;
+            color: #fff267;
+        }
+
+        .info p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('tridente_mobile.png') no-repeat center center/cover;
+            }
+            .cta-button {
+                font-size: 1.5em;
+                padding: 20px 24px;
+            }
+        
+            .cta-button i {
+                font-size: 1.5em; /* Reduce el tamaño del icono de WhatsApp */
+                margin-right: 10px;
+            }
+            .hero h1 {
+                font-size: 2em; /* Reduce el tamaño del título */
+            }
+            .hero h2{
+                font-size: 1.5em;
+            }
+        
+            .hero p {
+                font-size: 1em; /* Reduce el tamaño del párrafo */
+            }
+        }
+
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '...');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" src="https://www.facebook.com/tr?id=...&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <script>
+    const accessToken = "...";
+    const pixelId = "...";
+    const conversionValue = 5.00;
+    const currency = "ARS";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const whatsappButton = document.querySelector('.cta-button');
+
+      if (whatsappButton) {
+        whatsappButton.addEventListener('click', function () {
+          const eventos = ["Comprar", "Cliente potencial"];
+          const eventoSeleccionado = eventos[Math.floor(Math.random() * eventos.length)];
+
+          fbq('track', eventoSeleccionado, {
+            content_name: 'Clic en botón WhatsApp',
+            content_category: 'Interacción'
+          });
+
+          fetch(`https://graph.facebook.com/v18.0/${pixelId}/events`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+              data: [{
+                event_name: eventoSeleccionado,
+                event_time: Math.floor(Date.now() / 1000),
+                action_source: "website",
+                event_source_url: window.location.href,
+                event_id: Math.random().toString(36).substring(2, 15),
+                user_data: { client_user_agent: navigator.userAgent },
+                custom_data: { value: conversionValue, currency: currency }
+              }],
+              access_token: accessToken
+            })
+          })
+          .then(res => res.json())
+          .then(data => console.log("API Conversiones:", data))
+          .catch(error => console.error("Error:", error));
+        });
+      }
+    });
+  </script>
+
+</head>
+<body>
+<section class="hero">
+    <h1>¡Usa el tridente y convertite en el próximo ganador!</h1>
+    <h2>¡Sin Límites De Pago! Las 24 hs a tu servicio</h2>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <p style="font-size: 1.2em; margin-bottom: 15px;">¡A un click de tu próximo Gran Premio!</p>
+        <a href="https://api.whatsapp.com/send?phone=5493416192317&text=¡Buenas!%20Me%20gustaría%20crear%20un%20usuario.%20Mi%20nombre%20es:" 
+           class="cta-button" target="_blank">
+            <i class='fab fa-whatsapp'></i> ¡Crea tu usuario!
+        </a>
+    </div>
+</section>
+    <section class="info">
+        <h2>Beneficios Exclusivos</h2>
+        <p>Recibe bonos de bienvenida y promociones especiales.</p>
+        <p>Mínimo de carga: $3000</p>
+    </section>
+</body>
+</html>
