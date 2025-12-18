@@ -152,13 +152,10 @@
 
     <div style="margin-top: 30px; text-align: center;">
         <p style="font-size: 1.2em; margin-bottom: 15px;">¡A un click de tu próximo Gran Premio!</p>
-        <a href="#" 
-           id="whatsapp-button"
-           class="cta-button" 
-           target="_blank" 
-           onclick="fbq('trackCustom', 'WhatsAppClick')">
-            <i class='fab fa-whatsapp'></i> ¡Crea tu usuario!
-        </a>
+    <a href="https://api.whatsapp.com/send?phone=5491157543211&text=¡Buen4s!%20Me%20gust4rí4%20cre4r%20un%20usu4rio.%20Mi%20nombre%20es:"
+      class="cta-button" target="_blank" onclick="fbq('trackCustom', 'WhatsAppClick')">
+      <i class='fab fa-whatsapp'></i> ¡Crea tu usuario!
+    </a>
     </div>
 </section>
     <section class="info">
@@ -166,32 +163,5 @@
         <p>Recibe bonos de bienvenida y promociones especiales.</p>
         <p>Mínimo de carga: $3000</p>
     </section>
-    <script>
-        // Cargar número de teléfono dinámicamente desde la API
-        async function loadPhoneNumber() {
-            try {
-                const response = await fetch('/api/phone');
-                const data = await response.json();
-                
-                const phone = data.phone || '5491157552283';
-                const message = data.message || '¡Buen4s!%20Me%20gust4rí4%20cre4r%20un%20usu4rio.%20Mi%20nombre%20es:';
-                
-                const whatsappButton = document.getElementById('whatsapp-button');
-                whatsappButton.href = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
-            } catch (error) {
-                console.error('Error al cargar el número de teléfono:', error);
-                // Fallback al número por defecto si hay error
-                const whatsappButton = document.getElementById('whatsapp-button');
-                whatsappButton.href = 'https://api.whatsapp.com/send?phone=5491157552283&text=¡Buen4s!%20Me%20gust4rí4%20cre4r%20un%20usu4rio.%20Mi%20nombre%20es:';
-            }
-        }
-
-        // Cargar cuando la página esté lista
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadPhoneNumber);
-        } else {
-            loadPhoneNumber();
-        }
-    </script>
 </body>
 </html>
